@@ -8,17 +8,18 @@
 
 # Main method: We use the if __name__ == "__main__": check to run the main method, which is a common Python convention for ensuring that the script runs properly when executed directly.
 def move_disks(n, from_tower, to_tower, aux_tower):
-    if n == 1:  # Stopping condition
-        print(f"Move disk {n} from {from_tower} to {to_tower}")
-    else:
+    # Basecase 0, do nothing
+    if n != 0:
         move_disks(n - 1, from_tower, aux_tower, to_tower)
         print(f"Move disk {n} from {from_tower} to {to_tower}")
         move_disks(n - 1, aux_tower, to_tower, from_tower)
+
 
 def main():
     n = int(input("Enter number of disks: "))
     print("The moves are:")
     move_disks(n, 'A', 'C', 'B')
+
 
 if __name__ == "__main__":
     main()
